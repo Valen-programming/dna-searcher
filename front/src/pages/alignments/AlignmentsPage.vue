@@ -1,8 +1,18 @@
 <template>
     <label>Introduce tu secuencia: </label>
     <input type="text" name="secuencia" v-model="sequence" />
+    <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
     <button @click.prevent="alignSequence">Alinear</button>
+
+    <div class="sequenceInfo">
+        <h2 class="sequence">{{sequence_info_from_db.sequence}}</h2>
+        <h2 class="name">{{sequence_info_from_db.name}}</h2>
+        <h2 class="mut_location">{{sequence_info_from_db.mut_location}}</h2>
+        <h2 class="information">{{sequence_info_from_db.information}} </h2>
+    </div>
+
 </template>
+ 
 
 <script>
 export default {
@@ -10,11 +20,12 @@ export default {
     data() {
         return {
             sequence: "",
-            // dataBaseSequence: {}
+            sequence_info_from_db: {}
+            
         }
     },
     mounted(){
-        // this.loadData()
+        
     },
     methods: {
         
@@ -28,8 +39,8 @@ export default {
                 }
             };
             const response = await fetch ('http://localhost:5000/api/alignments', settings)
-            this.dataBaseSequence = await response.json()
-            console.log(this.sequence)
+            this.sequence_info_from_db= await response.json()
+            
         }  
         
     }
@@ -39,5 +50,8 @@ export default {
 </script>
 
 <style>
+.sequenceInfo{
+    border: 1px solid black;
+}
 
 </style>
