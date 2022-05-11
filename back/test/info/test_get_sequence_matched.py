@@ -30,7 +30,7 @@ def test_should_matched_a_new_sequence_with_a_database_sequence():
 
     response = client.post("/api/alignment", json={"sequence": "TTTAAACCCGGG"})
 
-    # assert response.status_code == 200
+    assert response.status_code == 200
     assert response.json == [
         {
             "sequence": "TTTAAACCCGGG",

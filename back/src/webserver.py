@@ -17,7 +17,7 @@ def create_app(repositories):
     def first_connection_with_webserver():
         return "wiii i finaly learned how this works"
 
-    @app.route("/api/alignment", methods=["POST"])
+    @app.route("/api/alignments", methods=["POST"])
     def get_new_sequence_matched_with_database_sequence():
         body = request.json
         sequence = body["sequence"]

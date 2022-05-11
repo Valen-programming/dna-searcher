@@ -69,11 +69,6 @@ class SequenceRepository:
         conn = self.create_conn()
         cursor = conn.cursor()
         cursor.execute(sql, {"sequence": sequence})
-        data = cursor.fetchall()
-
-        sequences = []
-        for item in data:
-            contact = Sequence(**item)
-            sequences.append(contact)
-
-        return sequences
+        data = cursor.fetchone()
+        sequence_info = Sequence(**data)
+        return sequence_info
