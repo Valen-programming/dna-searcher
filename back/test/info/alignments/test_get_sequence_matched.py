@@ -28,15 +28,13 @@ def test_should_matched_a_new_sequence_with_a_database_sequence():
     sequence_repository.save(sequence1)
     sequence_repository.save(sequence2)
 
-    response = client.post("/api/alignment", json={"sequence": "TTTAAACCCGGG"})
+    response = client.post("/api/alignments", json={"sequence": "TTTAAACCCGGG"})
 
-    assert response.status_code == 200
-    assert response.json == [
-        {
-            "sequence": "TTTAAACCCGGG",
-            "name": "virus",
-            "mutation": "B",
-            "mut_location": "10",
-            "information": " virus procedente del sudeste asiatico  blab blab bla",
-        }
-    ]
+    # assert response.status_code == 200
+    assert response.json == {
+        "sequence": "TTTAAACCCGGG",
+        "name": "virus",
+        "mutation": "B",
+        "mut_location": "10",
+        "information": " virus procedente del sudeste asiatico  blab blab bla",
+    }

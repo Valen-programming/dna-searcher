@@ -51,16 +51,7 @@ class SequenceRepository:
         """
         conn = self.create_conn()
         cursor = conn.cursor()
-        cursor.execute(
-            sql,
-            {
-                "sequence": new_sequence.sequence,
-                "name": new_sequence.name,
-                "mutation": new_sequence.mutation,
-                "mut_location": new_sequence.mut_location,
-                "information": new_sequence.information,
-            },
-        )
+        cursor.execute(sql, new_sequence.to_dict())
 
         conn.commit()
 

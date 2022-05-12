@@ -24,4 +24,11 @@ def create_app(repositories):
         matched_sequence = repositories["sequence"].new_sequence_matcher(sequence)
         return object_to_json(matched_sequence), 200
 
+    @app.route("/api/sequences", methods=["POST"])
+    def save_new_sequence_and_its_information():
+        data = request.json
+        sequence_with_info = Sequence(**data)
+        repositories["sequence"].save(sequence_with_info)
+        return ("", 200)
+
     return app
