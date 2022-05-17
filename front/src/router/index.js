@@ -16,6 +16,11 @@ const routes = [
     name: 'Alignments',
     component: () => import('@/pages/alignments/AlignmentsPage.vue'),
   },
+  {
+    path: '/sequences/add',
+    name: 'AddNewSequence',
+    component: () => import('@/pages/add_new_sequence/AddNewSequencePage.vue'),
+  },
 ]
 
 const router = createRouter({
