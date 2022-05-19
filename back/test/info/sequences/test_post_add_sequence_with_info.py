@@ -10,6 +10,7 @@ def test_should_save_new_sequence_with_its_information_attached():
     client = app.test_client()
 
     body = {
+        "id": "001",
         "sequence": "GGGGGCCCCCAAT",
         "name": "Rizhopus Stolonifer",
         "mutation": "B",

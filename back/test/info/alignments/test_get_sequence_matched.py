@@ -11,6 +11,7 @@ def test_should_matched_a_new_sequence_with_a_database_sequence():
     client = app.test_client()
 
     sequence1 = Sequence(
+        id="001",
         sequence="TTTGGGCCCGGG",
         name="virus",
         mutation="A",
@@ -19,6 +20,7 @@ def test_should_matched_a_new_sequence_with_a_database_sequence():
     )
 
     sequence2 = Sequence(
+        id="002",
         sequence="TTTAAACCCGGG",
         name="virus",
         mutation="B",
@@ -32,6 +34,7 @@ def test_should_matched_a_new_sequence_with_a_database_sequence():
 
     # assert response.status_code == 200
     assert response.json == {
+        "id": "002",
         "sequence": "TTTAAACCCGGG",
         "name": "virus",
         "mutation": "B",
