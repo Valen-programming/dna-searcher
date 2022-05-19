@@ -2,7 +2,8 @@ import sqlite3
 
 
 class Sequence:
-    def __init__(self, sequence, name, mutation, mut_location, information):
+    def __init__(self, id, sequence, name, mutation, mut_location, information):
+        self.id = id
         self.sequence = sequence
         self.name = name
         self.mutation = mutation
@@ -11,6 +12,7 @@ class Sequence:
 
     def to_dict(self):
         return {
+            "id": self.id,
             "sequence": self.sequence,
             "name": self.name,
             "mutation": self.mutation,
@@ -32,6 +34,7 @@ class SequenceRepository:
     def init_tables(self):
         sql = """
         CREATE TABLE if not exists sequences (
+            id varchar,
             sequence varchar,
             name varchar,
             mutation varchar,
@@ -45,9 +48,9 @@ class SequenceRepository:
 
     def save(self, new_sequence):
         sql = """ INSERT INTO sequences 
-        (sequence,name, mutation, mut_location, information) 
+        (id,sequence,name, mutation, mut_location, information) 
         values 
-        ( :sequence, :name, :mutation, :mut_location, :information)
+        ( :id, :sequence, :name, :mutation, :mut_location, :information)
         """
         conn = self.create_conn()
         cursor = conn.cursor()

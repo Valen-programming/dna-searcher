@@ -23,6 +23,7 @@
  
 
 <script>
+import { v4 as uuidv4 } from "uuid";
 export default {
     name: 'AddNewSequence',
     data() {
@@ -42,7 +43,10 @@ export default {
     methods: {
         
         async addSequence(){
-            let new_sequence = {'sequence': this.sequence,
+            let id_sequence = uuidv4()
+            let new_sequence = {
+                                'id':id_sequence,
+                                'sequence': this.sequence,
                                 'name': this.name,
                                 'mutation': this.mutation,
                                 'mut_location': this.mut_location,

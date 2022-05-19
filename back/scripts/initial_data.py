@@ -9,6 +9,7 @@ from src.domain.sequence import SequenceRepository, Sequence
 database_path = "data/database.db"
 
 sequence1 = Sequence(
+    id="001",
     sequence="TTTGGGCCCGGG",
     name="virus",
     mutation="A",
@@ -17,6 +18,7 @@ sequence1 = Sequence(
 )
 
 sequence2 = Sequence(
+    id="002",
     sequence="TTTAAACCCGGG",
     name="virus",
     mutation="B",
@@ -24,6 +26,7 @@ sequence2 = Sequence(
     information=" virus procedente del sudeste asiatico ",
 )
 sequence3 = Sequence(
+    id="003",
     sequence="AAAGGGCCCGGG",
     name="virus",
     mutation="A",
@@ -32,6 +35,7 @@ sequence3 = Sequence(
 )
 
 sequence4 = Sequence(
+    id="004",
     sequence="GGGAAACCCGGG",
     name="virus",
     mutation="B",
