@@ -66,3 +66,26 @@ class SequenceRepository:
         data = cursor.fetchone()
         sequence_info = Sequence(**data)
         return sequence_info
+
+    def get_sequence_by_id(self, id):
+        sql = """SELECT * FROM sequences WHERE id = :id"""
+        conn = self.create_conn()
+        cursor = conn.cursor()
+        cursor.execute(sql, {"id": id})
+        data = cursor.fetchone()
+        sequence_info = Sequence(**data)
+        return sequence_info
+
+    def edit_sequence(self, id, event):
+        sql = """UPDATE sequences
+            SET id= :id, sequence= :sequence,name= :name, mutation= :mutation, mut_location = :mut_location, information = :information
+            WHERE id = :id 
+            """
+
+        conn = self.create_conn()
+        cursor = conn.cursor()
+        params = event.to_dict()
+        params["id"] = id
+        cursor.execute(sql, params)
+        conn.commit()
+        conn.close()

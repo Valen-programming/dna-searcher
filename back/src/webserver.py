@@ -31,4 +31,16 @@ def create_app(repositories):
         repositories["sequence"].save(sequence_with_info)
         return ("", 200)
 
+    @app.route("/api/sequences/<id>", methods=["GET"])
+    def get_sequence_by_id(id):
+        sequence_with_info = repositories["sequence"].get_sequence_by_id(id)
+        return object_to_json(sequence_with_info), 200
+
+    @app.route("/api/sequences/<id>", methods=["PUT"])
+    def edit_sequence_and_its_information(id):
+        data = request.json
+        sequence_with_info = Sequence(**data)
+        repositories["sequence"].edit_sequence(id, sequence_with_info)
+        return ("", 200)
+
     return app
