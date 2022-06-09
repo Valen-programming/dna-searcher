@@ -1,0 +1,8 @@
+Siguiente paso:
+estoy intentando get by id y con los router links, mirar bien como se pone el id en la ruta
+
+saber hacer bien el endpoint en front para tener la info por id.
+ Esta pagina de modificar info va a venir desde la pagina principal.
+ Una vez hecho el link, pensar como hacer ese mismo link desde la secuencia q 
+ me aparezca venida de la base de datos 
+MIRAR QUE FUNCIONE EL PUT, QUE AUN ESTOY EN ESO, resulta que en el front no estoy poniendo bien el id
