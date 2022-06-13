@@ -1,5 +1,4 @@
 <template>
-  <body>
     <header>
       <div class="logo">
           <img id="header-img" src="@/assets/img/logo.png" alt="adn searcher logo" />
@@ -31,7 +30,6 @@
           </div>
       </section>
     </main>
-  </body>
 </template>
 
 <script>
@@ -58,53 +56,52 @@ export default {
 </script>
 
 <style scoped>
-*{
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
-}
-body{
-  background:linear-gradient(rgba(0, 0, 0, 0.356),#009688),url(banner.jpg);
-  background-size: cover;
-  background-position: center;
-  height:100vh;
-  width:100vw;
-  
-}
+
 header {
   position: relative;
   top: 0;
   min-height: 75px;
   padding: 0px 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
   align-items: center;
 }
 .logo > img {
   max-width: 80px;
-  margin-left: 10px;
-  margin-top: 10px;
-  width:60%;
+  margin: 7px;
+  width:100%;
 }
 .nav{
   display:flex;
   flex-direction: row;
-  justify-content: space-around;
+  background-color: rgba(240, 248, 255, 0.285);
 }
 .nav-link{
   margin:10px;
-  margin-right: 10px;
+  padding:15px;
+  font-size:100%;
+  border-radius: 3px;
+}
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.747);
+  transition: background-color 0.8s;
 }
 h1{
-  font-size:9vw;
-  color:whitesmoke;
+  font-size:8vw;
+  color:blue;
+}
+p{
+  font-size:2.5vw;
 }
 .banner{
   width:68%;
   height: 50%;
-  margin:auto;
+  margin:0px auto;
   padding:8vw;
-  background-color: rgba(240, 248, 255, 0.244);
+  background-color: rgba(240, 248, 255, 0.55);
+  display:flex;
+  align-items: center;
+  justify-content: center;
   
 }
 
