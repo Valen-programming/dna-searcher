@@ -1,4 +1,5 @@
 <template>
+    <NavBar></NavBar>
     <label>Introduce tu secuencia: </label>
     <input type="text" name="secuencia" v-model="sequence" />
 
@@ -24,46 +25,42 @@
 
 <script>
 import { v4 as uuidv4 } from "uuid";
+import NavBar from '@/components/NavBar.vue'
 export default {
-    name: 'AddNewSequence',
+    name: "AddNewSequence",
+    components: { NavBar },
     data() {
         return {
             sequence: "",
             name: "",
             mutation: "",
-            mut_location:"",
+            mut_location: "",
             information: "",
-            
-            
-        }
+        };
     },
-    mounted(){
-        
+    mounted() {
     },
     methods: {
-        
-        async addSequence(){
-            let id_sequence = uuidv4()
+        async addSequence() {
+            let id_sequence = uuidv4();
             let new_sequence = {
-                                'id':id_sequence,
-                                'sequence': this.sequence,
-                                'name': this.name,
-                                'mutation': this.mutation,
-                                'mut_location': this.mut_location,
-                                'information': this.information
-                                }
+                "id": id_sequence,
+                "sequence": this.sequence,
+                "name": this.name,
+                "mutation": this.mutation,
+                "mut_location": this.mut_location,
+                "information": this.information
+            };
             const settings = {
-                method: 'POST',
+                method: "POST",
                 body: JSON.stringify(new_sequence),
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json"
                 }
             };
-            await fetch ('http://localhost:5000/api/sequences', settings);
-            
-        }  
-        
-    }
+            await fetch("http://localhost:5000/api/sequences", settings);
+        }
+    },
 }
 
 

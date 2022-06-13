@@ -1,4 +1,5 @@
 <template>
+    <NavBar></NavBar>
     <label>Introduce tu secuencia: </label>
     <input type="text" name="secuencia" v-model="sequence" />
     <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
@@ -15,8 +16,10 @@
  
 
 <script>
+import NavBar from '@/components/NavBar.vue'
 export default {
     name: 'Alignments',
+    components:{NavBar},
     data() {
         return {
             sequence: "",

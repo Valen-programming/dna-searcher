@@ -1,4 +1,5 @@
 <template>
+    <NavBar></NavBar>
     <label>Introduce tu secuencia: </label>
     <input type="text" name="secuencia" v-model="info.sequence" /><br>
 
@@ -25,8 +26,10 @@
  
 
 <script>
+import NavBar from '@/components/NavBar.vue'
 export default {
     name: 'AddNewSequence',
+    components:{NavBar},
     data() {
         return {
             info:{}
