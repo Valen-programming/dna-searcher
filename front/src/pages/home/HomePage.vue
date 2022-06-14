@@ -1,5 +1,6 @@
 <template>
-    <header>
+    <div id="home-page">
+      <header>
     <NavBar></NavBar> 
     </header>
     <main>
@@ -10,6 +11,7 @@
           </div>
       </section>
     </main>
+    </div>
 </template>
 
 <script>
@@ -58,5 +60,9 @@ p{
   justify-content: center;
   
 }
-
+#home-page{
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg,#627db170 10%, #deecde8e 30%);
+  }
 </style>

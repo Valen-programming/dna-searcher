@@ -48,7 +48,7 @@
 .nav{
   display:flex;
   flex-direction: row;
-  background-color: rgba(240, 248, 255, 0.285);
+  background-color: rgba(240, 248, 255, 0.45);
 }
 .nav-link{
   margin:10px;
