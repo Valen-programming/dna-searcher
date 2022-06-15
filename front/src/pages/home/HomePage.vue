@@ -1,16 +1,16 @@
 <template>
-    <div id="home-page">
+    <div class="container">
       <header>
-    <NavBar></NavBar> 
-    </header>
-    <main>
-      <section class="banner">
-          <div class="banner-text">
-            <h1>ADN SEARCHER</h1>
-            <p>La mejor web de consultas de secuencias genéticas</p>
-          </div>
-      </section>
-    </main>
+        <NavBar></NavBar> 
+      </header>
+      <main>
+        <section class="banner">
+            <div class="banner-text">
+              <h1>ADN SEARCHER</h1>
+              <p>La mejor web de consultas de secuencias genéticas</p>
+            </div>
+        </section>
+      </main>
     </div>
 </template>
 
@@ -60,9 +60,5 @@ p{
   justify-content: center;
   
 }
-#home-page{
-  width: 100%;
-  min-height: 100vh;
-  background: linear-gradient(180deg,#627db170 10%, #deecde8e 30%);
-  }
+
 </style>

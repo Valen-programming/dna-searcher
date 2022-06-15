@@ -1,17 +1,18 @@
 <template>
-    <NavBar></NavBar>
-    <label>Introduce tu secuencia: </label>
-    <input type="text" name="secuencia" v-model="sequence" />
-    <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
-    <button @click.prevent="alignSequence">Alinear</button>
+    <div class="container">
+        <NavBar></NavBar>
+        <label>Introduce tu secuencia: </label>
+        <input type="text" name="secuencia" v-model="sequence" />
+        <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
+        <button @click.prevent="alignSequence">Alinear</button>
 
-    <div class="sequenceInfo">
-        <h2 class="sequence" @click="this.$router.push({name: 'EditSequence', params:{id:sequence_info_from_db.id}})">{{sequence_info_from_db.sequence}}</h2>
-        <h2 class="name">{{sequence_info_from_db.name}}</h2>
-        <h2 class="mut_location">{{sequence_info_from_db.mut_location}}</h2>
-        <h2 class="information">{{sequence_info_from_db.information}} </h2>
+        <div class="sequenceInfo">
+            <h2 class="sequence" @click="this.$router.push({name: 'EditSequence', params:{id:sequence_info_from_db.id}})">{{sequence_info_from_db.sequence}}</h2>
+            <h2 class="name">{{sequence_info_from_db.name}}</h2>
+            <h2 class="mut_location">{{sequence_info_from_db.mut_location}}</h2>
+            <h2 class="information">{{sequence_info_from_db.information}} </h2>
+        </div>
     </div>
-
 </template>
  
 
@@ -55,6 +56,7 @@ export default {
 <style>
 .sequenceInfo{
     border: 1px solid black;
+    justify-content: stretch;
 }
 
 </style>

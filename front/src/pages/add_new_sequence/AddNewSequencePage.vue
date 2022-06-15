@@ -1,25 +1,27 @@
 <template>
-    <NavBar></NavBar>
-    <label>Introduce tu secuencia: </label>
-    <input type="text" name="secuencia" v-model="sequence" />
+    <div class="container">
+        <NavBar></NavBar>
+            <form>
+                <label>Introduce tu secuencia: </label>
+                <input type="text" name="secuencia" v-model="sequence" />
 
-    <label>Introduce el nombre de la especie a la que pertenece la secuencia: </label>
-    <input type="text" name="name" v-model="name" />
+                <label>Introduce el nombre de la especie a la que pertenece la secuencia: </label>
+                <input type="text" name="name" v-model="name" />
 
-    <label>Introduce la posición de la mutación: </label>
-    <input type="text" name="mut_location" v-model="mut_location" />
+                <label>Introduce la posición de la mutación: </label>
+                <input type="text" name="mut_location" v-model="mut_location" />
 
-    <label>Introduce el tipo de mutación: </label>
-    <input type="text" name="mutation" v-model="mutation" />
+                <label>Introduce el tipo de mutación: </label>
+                <input type="text" name="mutation" v-model="mutation" />
 
-    <label>Introduce la información acerca de la secuencia introducida: </label>
-    <input type="text" name="information" v-model="information" />
+                <label>Introduce la información acerca de la secuencia introducida: </label>
+                <input type="text" name="information" v-model="information" />
+            </form>
 
+                <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
+                <button @click.prevent="addSequence">Guardar</button>
 
-
-    <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
-    <button @click.prevent="addSequence">Guardar</button>
-    {{$data}}
+    </div>
 </template>
  
 
@@ -69,6 +71,26 @@ export default {
 <style>
 .sequenceInfo{
     border: 1px solid black;
+}
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 2em;
+}
+form label {
+  font-weight: bold;
+  margin-left: 50%;
+}
+label,
+input {
+  margin-top: 1em;
+}
+form input {
+  margin-right: 40em;
+  padding: 5px;
+}
+button {
+  padding: 0 1em;
 }
 
 </style>

@@ -1,27 +1,30 @@
 <template>
-    <NavBar></NavBar>
-    <label>Introduce tu secuencia: </label>
-    <input type="text" name="secuencia" v-model="info.sequence" /><br>
+    <div class="container">
+        <NavBar></NavBar>
+        <form>
+            <label>Introduce tu secuencia: </label>
+            <input type="text" name="secuencia" v-model="info.sequence" /><br>
 
-    <label>Introduce el nombre de la especie a la que pertenece la secuencia: </label>
-    <input type="text" name="name" v-model="info.name" /> <br>
-
-
-    <label>Introduce la posición de la mutación: </label>
-    <input type="text" name="mut_location" v-model="info.mut_location" /> <br>
-
-    <label>Introduce el tipo de mutación: </label>
-    <input type="text" name="mutation" v-model="info.mutation" /> <br>
-
-    <label>Introduce la información acerca de la secuencia introducida: </label>
-    <input type="text" name="information" v-model="info.information" /><br>
+            <label>Introduce el nombre de la especie a la que pertenece la secuencia: </label>
+            <input type="text" name="name" v-model="info.name" /> <br>
 
 
+            <label>Introduce la posición de la mutación: </label>
+            <input type="text" name="mut_location" v-model="info.mut_location" /> <br>
 
-    <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
-    <button @click.prevent="modifyEvent">Guardar</button>
-    <!-- el prevent es para q se recargue la pagina cuando se da al boton de guardar -->
-    {{$data}}
+            <label>Introduce el tipo de mutación: </label>
+            <input type="text" name="mutation" v-model="info.mutation" /> <br>
+
+            <label>Introduce la información acerca de la secuencia introducida: </label>
+            <input type="text" name="information" v-model="info.information" /><br>
+        </form>
+
+
+        <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
+        <button @click.prevent="modifyEvent">Guardar</button>
+        <!-- el prevent es para q se recargue la pagina cuando se da al boton de guardar -->
+        
+    </div>
 </template>
  
 
@@ -67,6 +70,26 @@ export default {
 <style>
 .sequenceInfo{
     border: 1px solid black;
+}
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 2em;
+}
+form label {
+  font-weight: bold;
+  margin-left: 50%;
+}
+label,
+input {
+  margin-top: 1em;
+}
+form input {
+  margin-right: 40em;
+  padding: 5px;
+}
+button {
+  padding: 0 1em;
 }
 
 </style>    
