@@ -13,7 +13,8 @@ def test_should_matched_a_new_sequence_with_a_database_sequence():
     sequence1 = Sequence(
         id="001",
         sequence="TTTGGGCCCGGG",
-        name="virus",
+        categoy="virus",
+        name="salmonella",
         mutation="A",
         mut_location="10",
         information=" virus procedente del norte de europa",
@@ -22,7 +23,8 @@ def test_should_matched_a_new_sequence_with_a_database_sequence():
     sequence2 = Sequence(
         id="002",
         sequence="TTTAAACCCGGG",
-        name="virus",
+        category="virus",
+        name="e.coli",
         mutation="B",
         mut_location="10",
         information=" virus procedente del sudeste asiatico  blab blab bla",
@@ -36,7 +38,8 @@ def test_should_matched_a_new_sequence_with_a_database_sequence():
     assert response.json == {
         "id": "002",
         "sequence": "TTTAAACCCGGG",
-        "name": "virus",
+        "category": "virus",
+        "name": "e.coli",
         "mutation": "B",
         "mut_location": "10",
         "information": " virus procedente del sudeste asiatico  blab blab bla",
