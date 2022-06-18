@@ -94,3 +94,17 @@ class SequenceRepository:
         cursor.execute(sql, params)
         conn.commit()
         conn.close()
+
+    def get_sequence_by_category(self, category):
+        sql = """SELECT * FROM sequences WHERE category = :category"""
+        conn = self.create_conn()
+        cursor = conn.cursor()
+        cursor.execute(sql, {"category": category})
+        data = cursor.fetchall()
+
+        sequences = []
+        for item in data:
+            sequence_with_info = Sequence(**item)
+            sequences.append(sequence_with_info)
+
+        return sequences

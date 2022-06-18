@@ -13,7 +13,7 @@ def test_should_matched_a_new_sequence_with_a_database_sequence():
     sequence1 = Sequence(
         id="001",
         sequence="TTTGGGCCCGGG",
-        categoy="virus",
+        category="virus",
         name="salmonella",
         mutation="A",
         mut_location="10",

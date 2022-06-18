@@ -43,4 +43,9 @@ def create_app(repositories):
         repositories["sequence"].edit_sequence(id, sequence_with_info)
         return ("", 200)
 
+    @app.route("/api/categories/<category>", methods=["GET"])
+    def get_sequence_by_category(category):
+        sequence_with_info = repositories["sequence"].get_sequence_by_category(category)
+        return object_to_json(sequence_with_info), 200
+
     return app
