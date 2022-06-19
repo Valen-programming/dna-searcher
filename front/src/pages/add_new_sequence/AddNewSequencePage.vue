@@ -6,9 +6,9 @@
                 <input type="text" name="secuencia" v-model="sequence" />
 
                 <label> Introduce la categoría a la que pertenece:</label>
-                <select id="category">
+                <select id="category" v-model="category">
                     <option disable value=""></option>
-                    <option v-for="category in categories" :key="category.id">
+                    <option v-for="category in categories" :value="category" :key="category.id">
                         {{ category }}
                     </option>
                 </select>
@@ -28,7 +28,7 @@
 
                 <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
                 <button @click.prevent="addSequence">Guardar</button>
-
+                {{$data}}
     </div>
 </template>
  
@@ -42,6 +42,7 @@ export default {
     data() {
         return {
             sequence: "",
+            category: "",
             name: "",
             mutation: "",
             mut_location: "",
@@ -58,6 +59,7 @@ export default {
             let new_sequence = {
                 "id": id_sequence,
                 "sequence": this.sequence,
+                "category":this.category,
                 "name": this.name,
                 "mutation": this.mutation,
                 "mut_location": this.mut_location,
@@ -71,6 +73,7 @@ export default {
                 }
             };
             await fetch("http://localhost:5000/api/sequences", settings);
+            console.log(new_sequence)
         }
     },
 }

@@ -49,7 +49,7 @@ sequence4 = Sequence(
 # bacterias--------------------------------------------
 sequence5 = Sequence(
     id="005",
-    sequence="TTTGGGCCCGGG",
+    sequence="TTTGGGCCCGGGAAA",
     category="bacteria",
     name="E.coli",
     mutation="A",
@@ -59,7 +59,7 @@ sequence5 = Sequence(
 
 sequence6 = Sequence(
     id="006",
-    sequence="TTTAAACCCGGG",
+    sequence="TTTAAACCCGGGTTT",
     category="bacteria",
     name="Salmonella",
     mutation="B",
@@ -68,7 +68,7 @@ sequence6 = Sequence(
 )
 sequence7 = Sequence(
     id="007",
-    sequence="AAAGGGCCCGGG",
+    sequence="AAAGGGCCCGGGCCC",
     category="bacteria",
     name="E.coli",
     mutation="B",
@@ -78,7 +78,7 @@ sequence7 = Sequence(
 # Hongos-----------------------------------------
 sequence8 = Sequence(
     id="008",
-    sequence="TTTGGGCCCGGG",
+    sequence="AAATTTGGGCCCGGG",
     category="hongo",
     name="Rizopus stolonifer",
     mutation="A",
@@ -88,7 +88,7 @@ sequence8 = Sequence(
 
 sequence9 = Sequence(
     id="009",
-    sequence="TTTAAACCCGGG",
+    sequence="CCCTTTAAACCCGGG",
     category="hongo",
     name="Saccharomyces cerevisiae",
     mutation="B",
@@ -97,7 +97,7 @@ sequence9 = Sequence(
 )
 sequence10 = Sequence(
     id="0010",
-    sequence="AAAGGGCCCGGG",
+    sequence="GGGAAAGGGCCCGGG",
     category="hongo",
     name="Dermatofito",
     mutation="B",
@@ -107,7 +107,7 @@ sequence10 = Sequence(
 # plantas-------------------------------
 sequence11 = Sequence(
     id="0011",
-    sequence="TTTGGGCCCGGG",
+    sequence="TTTGGGAAACCCGGG",
     category="planta",
     name="Vitis vinifera",
     mutation="A",
@@ -117,7 +117,7 @@ sequence11 = Sequence(
 
 sequence12 = Sequence(
     id="0012",
-    sequence="TTTAAACCCGGG",
+    sequence="TTTAAATTTCCCGGG",
     category="planta",
     name="Humulus lupulus",
     mutation="B",
@@ -126,7 +126,7 @@ sequence12 = Sequence(
 )
 sequence13 = Sequence(
     id="0013",
-    sequence="AAAGGGCCCGGG",
+    sequence="AAAGGGAAAACCCGGG",
     category="planta",
     name="Saccharum officinarum",
     mutation="B",
@@ -136,7 +136,7 @@ sequence13 = Sequence(
 # Animales---------------------------------
 sequence14 = Sequence(
     id="0014",
-    sequence="TTTAAACCCGGG",
+    sequence="TTTAAACCCAAAGGG",
     category="animal",
     name="Mus musculus",
     mutation="B",
@@ -145,7 +145,7 @@ sequence14 = Sequence(
 )
 sequence15 = Sequence(
     id="0015",
-    sequence="AAAGGGCCCGGG",
+    sequence="AAAGGGCCCTTTGGG",
     category="animal",
     name="lupus nomen",
     mutation="B",
@@ -155,7 +155,7 @@ sequence15 = Sequence(
 # Humanos--------------------------------------------------------
 sequence16 = Sequence(
     id="0016",
-    sequence="TTTAAACCCGGG",
+    sequence="TTTAAACCCGGGTTTTT",
     category="humano",
     name="Homo neanderthalensis",
     mutation="B",
@@ -164,7 +164,7 @@ sequence16 = Sequence(
 )
 sequence17 = Sequence(
     id="0017",
-    sequence="AAAGGGCCCGGG",
+    sequence="AAAGGGCCCGGGAAAAA",
     category="humano",
     name="Homo sapiens",
     mutation="B",
