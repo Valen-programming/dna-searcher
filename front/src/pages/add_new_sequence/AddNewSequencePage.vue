@@ -5,8 +5,12 @@
                 <label>Introduce tu secuencia: </label>
                 <input type="text" name="secuencia" v-model="sequence" />
 
-                <label>Introduce el nombre de la especie a la que pertenece la secuencia: </label>
-                <input type="text" name="name" v-model="name" />
+                <label> Introduce el nombre de la especie a la que pertenece la secuencia:</label>
+                <select id="category" >
+                    <option v-for="category in categories" :key="category.id">
+                        {{ category }}
+                    </option>
+                </select>
 
                 <label>Introduce la posición de la mutación: </label>
                 <input type="text" name="mut_location" v-model="mut_location" />
@@ -38,6 +42,8 @@ export default {
             mutation: "",
             mut_location: "",
             information: "",
+            categories: ["virus","bacteria","hongo","planta","animal","humano"
+            ],
         };
     },
     mounted() {
