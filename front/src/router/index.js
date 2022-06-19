@@ -26,6 +26,11 @@ const routes = [
     name: 'EditSequence',
     component: () => import('@/pages/edit_sequence/EditSequencePage.vue'),
   },
+  {
+    path: '/categories',
+    name: 'Categories',
+    component: () => import('@/pages/categories/CategoriesPage.vue'),
+  },
 ]
 
 const router = createRouter({

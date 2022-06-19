@@ -24,6 +24,10 @@
         <router-link to="/sequences/<id>">
           <div class="nav-link">Editar secuencia</div>
         </router-link>
+
+        <router-link to="/categories">
+          <div class="nav-link">Catálogo de secuencias</div>
+        </router-link>
       </div>
   </div>
 </template>
