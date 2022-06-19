@@ -35,38 +35,10 @@
               <p>{{ event.mutation }}</p>
               <p>{{ event.mut_location }}</p>
               <p>{{ event.information }}</p>
+              <button @click="editSequence(event)"></button>
             </div>
         </article>
 
-
-    
-            <!-- <section>
-    <div>
-        <label for="">Selecciona </label>
-      <select v-model="selectedCategory">
-        <option class="desplegable-categorias" :value="null">
-          Todas las categorias
-        </option>
-        <option
-          v-for="category in categories" :value="category.category" :key="category.category_id">
-          {{ category.category }}
-        </option>
-      </select>
-    </div>
-    <article v-for="card in filteredCards" :key="card.ean">
-      <img src="@/assets/img/libro.png" alt="Libro" />
-      <h2 class="title">{{ card.title }}</h2>
-      <h3 class="author">Autor: {{ card.author }}</h3>
-      <h3 class="publisher">Editorial: {{ card.publisher }}</h3>
-      <h3 class="ean">EAN: {{ card.ean }}</h3>
-      <button
-        class="boton-detalles-libro"
-        @click="$router.push(`/books/${card.id}`)"
-      >
-        Detalles del libro
-      </button>
-    </article>
-  </section> -->
     </div>
 </template>
  
@@ -107,6 +79,9 @@ export default {
         async getHumanSequences(){
             const response =await fetch('http://localhost:5000/api/categories/humano');
             this.sequenceInfo = await response.json();
+        },
+        editSequence(event){
+          this.$router.push("/sequences/" + event.id)
         }
     },
 }
