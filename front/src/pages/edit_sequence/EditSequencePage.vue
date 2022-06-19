@@ -1,29 +1,32 @@
 <template>
     <div class="container">
         <NavBar></NavBar>
-        <form>
-            <label>Introduce tu secuencia: </label>
-            <input type="text" name="secuencia" v-model="info.sequence" /><br>
+            <form>
+                <label>Introduce tu secuencia: </label>
+                <input type="text" name="secuencia" v-model="info.sequence" /><br>
 
-            <label>Introduce el nombre de la especie a la que pertenece la secuencia: </label>
-            <input type="text" name="name" v-model="info.name" /> <br>
+                <label> Introduce el nombre de la especie a la que pertenece la secuencia:</label>
+                <select id="category" >
+                    <option v-for="category in categories" :key="category.id">
+                        {{ category }}
+                    </option>
+                </select>
+
+                <label>Introduce la posición de la mutación: </label>
+                <input type="text" name="mut_location" v-model="info.mut_location" /> <br>
+
+                <label>Introduce el tipo de mutación: </label>
+                <input type="text" name="mutation" v-model="info.mutation" /> <br>
+
+                <label>Introduce la información acerca de la secuencia introducida: </label>
+                <input type="text" name="information" v-model="info.information" /><br>
+            </form>
 
 
-            <label>Introduce la posición de la mutación: </label>
-            <input type="text" name="mut_location" v-model="info.mut_location" /> <br>
-
-            <label>Introduce el tipo de mutación: </label>
-            <input type="text" name="mutation" v-model="info.mutation" /> <br>
-
-            <label>Introduce la información acerca de la secuencia introducida: </label>
-            <input type="text" name="information" v-model="info.information" /><br>
-        </form>
-
-
-        <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
-        <button @click.prevent="modifyEvent">Guardar</button>
-        <!-- el prevent es para q se recargue la pagina cuando se da al boton de guardar -->
-        
+                <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
+                <button @click.prevent="modifyEvent">Guardar</button>
+                <!-- el prevent es para q se recargue la pagina cuando se da al boton de guardar -->
+                
     </div>
 </template>
  
@@ -35,7 +38,9 @@ export default {
     components:{NavBar},
     data() {
         return {
-            info:{}
+            info:{},
+            categories: ["virus","bacteria","hongo","planta","animal","humano"
+            ],
 
         };
     },
