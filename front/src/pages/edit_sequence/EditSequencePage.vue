@@ -3,23 +3,26 @@
         <NavBar></NavBar>
             <form>
                 <label>Introduce tu secuencia: </label>
-                <input type="text" name="secuencia" v-model="info.sequence" /><br>
+                <input type="text" name="secuencia" v-model="info.sequence" />
 
-                <label> Introduce el nombre de la especie a la que pertenece la secuencia:</label>
-                <select id="category" >
+                <label> Introduce la categoría a la que pertenece: </label>
+                <select id="category" v-model="info.category" >
                     <option v-for="category in categories" :key="category.id">
                         {{ category }}
                     </option>
                 </select>
 
+                <label>Introduce el nombre de la especie a la que pertenece la secuencia: </label>
+                <input type="text" name="name" v-model="info.name" />
+
                 <label>Introduce la posición de la mutación: </label>
-                <input type="text" name="mut_location" v-model="info.mut_location" /> <br>
+                <input type="text" name="mut_location" v-model="info.mut_location" /> 
 
                 <label>Introduce el tipo de mutación: </label>
-                <input type="text" name="mutation" v-model="info.mutation" /> <br>
+                <input type="text" name="mutation" v-model="info.mutation" /> 
 
                 <label>Introduce la información acerca de la secuencia introducida: </label>
-                <input type="text" name="information" v-model="info.information" /><br>
+                <input type="text" name="information" v-model="info.information" />
             </form>
 
 

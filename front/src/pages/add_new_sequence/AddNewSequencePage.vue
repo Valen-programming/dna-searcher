@@ -5,12 +5,16 @@
                 <label>Introduce tu secuencia: </label>
                 <input type="text" name="secuencia" v-model="sequence" />
 
-                <label> Introduce el nombre de la especie a la que pertenece la secuencia:</label>
-                <select id="category" >
+                <label> Introduce la categoría a la que pertenece:</label>
+                <select id="category">
+                    <option disable value=""></option>
                     <option v-for="category in categories" :key="category.id">
                         {{ category }}
                     </option>
                 </select>
+
+                <label>Introduce el nombre de la especie a la que pertenece la secuencia: </label>
+                <input type="text" name="name" v-model="name" />
 
                 <label>Introduce la posición de la mutación: </label>
                 <input type="text" name="mut_location" v-model="mut_location" />
