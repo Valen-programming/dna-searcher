@@ -81,29 +81,37 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .sequenceInfo{
     border: 1px solid black;
 }
 form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;  
+  align-items:stretch;
+  margin:0 auto;
+  text-align: left;
+  padding: 1em;
 }
 form label {
   font-weight: bold;
-  margin-left: 50%;
+  margin-top: 0.6em;
+  
 }
-label,
-input {
-  margin-top: 1em;
-}
-form input {
-  margin-right: 40em;
-  padding: 5px;
-}
+
 button {
   padding: 0 1em;
+}
+@media(min-width:1000px){
+form {
+ max-width: 900px;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+}
+
+}
+form label + input, select{
+    margin-bottom: 1em;
 }
 
 </style>

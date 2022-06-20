@@ -75,7 +75,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .sequenceInfo{
     border: 1px solid black;
 }
