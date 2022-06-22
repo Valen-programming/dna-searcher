@@ -28,17 +28,20 @@
               <span>Humano</span>
             </button>
         </div>
-        <article class="event" v-for="event in sequenceInfo" :key="event.id">
-            <div class="text-article">
-              <h2>{{ event.sequence }}</h2>
-              <p>{{ event.name }}</p>
-              <p>{{ event.mutation }}</p>
-              <p>{{ event.mut_location }}</p>
-              <p>{{ event.information }}</p>
-              <button @click="editSequence(event)"></button>
-            </div>
-        </article>
-
+        <div class="article-container">
+          <article class="event" v-for="event in sequenceInfo" :key="event.id">
+              <div class="text-article">
+                <h2>{{ event.sequence }}</h2>
+                <p>{{ event.name }}</p>
+                <p>{{ event.mutation }}</p>
+                <p>{{ event.mut_location }}</p>
+                <p>{{ event.information }}</p>
+                <div class="btn">
+                  <button @click="editSequence(event)">Editar</button>
+                </div>
+              </div>
+          </article>
+        </div>
     </div>
 </template>
  
@@ -52,8 +55,6 @@ export default {
         return {
             sequenceInfo:[],
         };
-    },
-    mounted() {
     },
     methods: {
         async getVirusSequences(){
@@ -89,35 +90,76 @@ export default {
 
 </script>
 
-<style scope>
+<style scoped>
 
 .categories-container{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
   border:solid black 2px;
-  padding: 10px;
+  padding: 10px 25px;
   background-color: rgba(240, 255, 255, 0.801);
-  margin: 1rem 5rem;
-}
-#category-img{
-  max-width: 100px;
-  margin: 7px;
-  width:100%;
-  border-radius: 10px;
+  margin:auto;
+  position: relative;
+  justify-content: space-between;
 }
 .link-category{
-  margin: 0px 8px 0px 0px;
-  padding:0px 16px 0px 0px;
- 
+  width: 200px;
+  padding: 3px 3px 4px;
+  border-radius: 8px;
+  margin:20px;
+  background-color: rgb(142, 200, 218);
+  display: inline-block;  
+  justify-content: center;
 }
 .link-category:hover {
   background-color: rgba(255, 255, 255, 0.841);
   transition: background-color 0.8s;
   box-shadow: 0px 0px 5px rgb(118, 133, 207);
   border-radius: 10px;
+  cursor: pointer;
+
+}
+#category-img{
+  max-width: 180px;
+  margin: 7px;
+  width:100%;
+  border-radius: 10px;
+}
+.article-container{
+  display:grid;
+  grid-template-columns: 1fr;
+  margin: 10px auto;
+  position:relative;
+  padding:3px;
+  
 }
 .text-article{
   border:solid blueviolet 2px;
-  margin-bottom:10px;
-  background-color: rgba(255, 255, 255, 0.841);
+  background-color: rgba(255, 255, 255, 0.941);
+  margin:10px auto;
+  padding:5px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+button {
+  font-size: 1em;
+  border-radius: 7px;
+  border: black solid 1.5px;
+  background-color: rgba(224, 224, 239, 0.77);
+  cursor: pointer;
+
+}
+@media(max-width: 750px){
+  .categories-container{
+    grid-template-columns: 1fr 1fr;
+  
+  }
+}
+@media(max-width: 500px){
+  .categories-container{
+    grid-template-columns: 1fr;
+  
+  }
 }
 
 </style>

@@ -23,12 +23,14 @@
 
                 <label>Introduce la información acerca de la secuencia introducida: </label>
                 <input type="text" name="information" v-model="info.information" />
+               
+                <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
+                <div class="btn">
+                    <button @click.prevent="modifyEvent">Guardar</button>
+                </div>
             </form>
 
 
-                <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
-                <button @click.prevent="modifyEvent">Guardar</button>
-                <!-- el prevent es para q se recargue la pagina cuando se da al boton de guardar -->
                 
     </div>
 </template>
@@ -76,28 +78,46 @@ export default {
 </script>
 
 <style scoped>
+
 .sequenceInfo{
     border: 1px solid black;
 }
 form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;  
+  align-items:start;
+  margin:0 auto;
+  text-align: left;
+  padding: 1em;  
 }
 form label {
   font-weight: bold;
-  margin-left: 50%;
 }
-label,
-input {
-  margin-top: 1em;
+.btn{
+    display:flex;
+    justify-content: center;
+    font-size: 1.2em;
 }
-form input {
-  margin-right: 40em;
-  padding: 5px;
+label, input{
+  font-size: 1.2em;
 }
 button {
-  padding: 0 1em;
+  border-radius: 7px;
+  border: black solid 1.5px;
+  background-color: rgba(224, 224, 239, 0.77);
+  cursor: pointer;
+
+}
+@media(min-width:1000px){
+form {
+ max-width: 900px;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+}
+
+}
+form label + input, select{
+    margin-bottom: 1em;
 }
 
 </style>    

@@ -19,4 +19,6 @@ a {
   width: 100%;
   min-height: 100vh;
   background: linear-gradient(180deg,#5e7cb370 20%, #deecde8e 40%);
+  display:flex;
+  flex-direction: column;
   }

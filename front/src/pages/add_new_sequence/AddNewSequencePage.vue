@@ -24,11 +24,12 @@
 
                 <label>Introduce la información acerca de la secuencia introducida: </label>
                 <input type="text" name="information" v-model="information" />
-            </form>
 
                 <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
-                <button @click.prevent="addSequence">Guardar</button>
-                {{$data}}
+                <div class="btn">
+                    <button @click.prevent="addSequence">Guardar</button>
+                </div>
+            </form>
     </div>
 </template>
  
@@ -88,20 +89,33 @@ export default {
 form {
   display: flex;
   flex-direction: column;  
-  align-items:stretch;
+  align-items:start;
   margin:0 auto;
   text-align: left;
   padding: 1em;
 }
 form label {
   font-weight: bold;
-  margin-top: 0.6em;
+
   
 }
-
-button {
-  padding: 0 1em;
+.btn{
+    display:flex;
+    justify-content: center;
+    font-size:1.2em;
 }
+label,input{
+    font-size:1.2em;
+}
+button {
+  font-size: 1em;
+  border-radius: 7px;
+  border: black solid 1.5px;
+  background-color: rgba(224, 224, 239, 0.77);
+  cursor: pointer;
+
+}
+
 @media(min-width:1000px){
 form {
  max-width: 900px;
