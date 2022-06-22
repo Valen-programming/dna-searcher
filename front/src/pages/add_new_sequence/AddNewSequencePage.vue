@@ -25,9 +25,8 @@
                 <label>Introduce la información acerca de la secuencia introducida: </label>
                 <input type="text" name="information" v-model="information" />
 
-                <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
                 <div class="btn">
-                    <button @click.prevent="addSequence">Guardar</button>
+                    <button @click="addSequence">Guardar</button>
                 </div>
             </form>
     </div>
@@ -55,7 +54,25 @@ export default {
     mounted() {
     },
     methods: {
+        isValidSequenceInfo() {
+      if (
+        this.sequence === "" ||
+        this.category === "" ||
+        this.name === "" ||
+        this.mutation === "" ||
+        this.mut_location === "" ||
+        this.information === ""
+      ) {
+        return false;
+      } else {
+        return true;
+      }
+    },
         async addSequence() {
+            if (!this.isValidSequenceInfo()) {
+                alert("Se deben rellaner todos los campos");
+                return;
+            }
             let id_sequence = uuidv4();
             let new_sequence = {
                 "id": id_sequence,
@@ -74,7 +91,8 @@ export default {
                 }
             };
             await fetch("http://localhost:5000/api/sequences", settings);
-            console.log(new_sequence)
+            alert("Evento guardado correctamente");
+            this.$router.push("/sequences/add");
         }
     },
 }

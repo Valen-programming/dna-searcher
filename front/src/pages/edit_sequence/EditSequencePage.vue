@@ -24,9 +24,8 @@
                 <label>Introduce la información acerca de la secuencia introducida: </label>
                 <input type="text" name="information" v-model="info.information" />
                
-                <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
                 <div class="btn">
-                    <button @click.prevent="modifyEvent">Guardar</button>
+                    <button @click="modifyEvent">Guardar</button>
                 </div>
             </form>
 
@@ -57,9 +56,26 @@ export default {
         async loadData(){
             const response = await fetch(`http://localhost:5000/api/sequences/`+ this.$route.params.id);
             this.info = await response.json();
-
+        },
+        isValidSequenceModified() {
+          if (
+            this.info.sequence === "" ||
+            this.info.category === "" ||
+            this.info.name === "" ||
+            this.info.mutation === "" ||
+            this.info.mut_location === "" ||
+            this.info.information === ""
+          ) {
+            return false;
+          } else {
+            return true;
+          }
         },
         async modifyEvent() {
+            if (!this.isValidSequenceModified()) {
+                alert("Se deben rellaner todos los campos");
+                return;
+            }
             let modified_info = this.info
             const settings = {
                 method: "PUT",
@@ -70,6 +86,8 @@ export default {
                     
                 };
             await fetch ('http://localhost:5000/api/sequences/' + this.$route.params.id , settings);
+            alert("Evento guardado correctamente");
+            this.$router.push("/");
             },   
     },
         
