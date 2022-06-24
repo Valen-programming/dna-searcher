@@ -2,9 +2,12 @@ import sqlite3
 
 
 class Sequence:
-    def __init__(self, id, sequence, name, mutation, mut_location, information):
+    def __init__(
+        self, id, sequence, category, name, mutation, mut_location, information
+    ):
         self.id = id
         self.sequence = sequence
+        self.category = category
         self.name = name
         self.mutation = mutation
         self.mut_location = mut_location
@@ -14,6 +17,7 @@ class Sequence:
         return {
             "id": self.id,
             "sequence": self.sequence,
+            "category": self.category,
             "name": self.name,
             "mutation": self.mutation,
             "mut_location": self.mut_location,
@@ -36,6 +40,7 @@ class SequenceRepository:
         CREATE TABLE if not exists sequences (
             id varchar,
             sequence varchar,
+            category varchar,
             name varchar,
             mutation varchar,
             mut_location varchar,
@@ -48,9 +53,9 @@ class SequenceRepository:
 
     def save(self, new_sequence):
         sql = """ INSERT INTO sequences 
-        (id,sequence,name, mutation, mut_location, information) 
+        (id,sequence,category,name, mutation, mut_location, information) 
         values 
-        ( :id, :sequence, :name, :mutation, :mut_location, :information)
+        ( :id, :sequence,:category, :name, :mutation, :mut_location, :information)
         """
         conn = self.create_conn()
         cursor = conn.cursor()
@@ -78,7 +83,7 @@ class SequenceRepository:
 
     def edit_sequence(self, id, event):
         sql = """UPDATE sequences
-            SET id= :id, sequence= :sequence,name= :name, mutation= :mutation, mut_location = :mut_location, information = :information
+            SET id= :id, sequence= :sequence, category= :category,name= :name, mutation= :mutation, mut_location = :mut_location, information = :information
             WHERE id = :id 
             """
 
@@ -89,3 +94,17 @@ class SequenceRepository:
         cursor.execute(sql, params)
         conn.commit()
         conn.close()
+
+    def get_sequence_by_category(self, category):
+        sql = """SELECT * FROM sequences WHERE category = :category"""
+        conn = self.create_conn()
+        cursor = conn.cursor()
+        cursor.execute(sql, {"category": category})
+        data = cursor.fetchall()
+
+        sequences = []
+        for item in data:
+            sequence_with_info = Sequence(**item)
+            sequences.append(sequence_with_info)
+
+        return sequences

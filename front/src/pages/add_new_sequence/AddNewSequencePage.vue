@@ -5,6 +5,14 @@
                 <label>Introduce tu secuencia: </label>
                 <input type="text" name="secuencia" v-model="sequence" />
 
+                <label> Introduce la categoría a la que pertenece:</label>
+                <select id="category" v-model="category">
+                    <option disable value=""></option>
+                    <option v-for="category in categories" :value="category" :key="category.id">
+                        {{ category }}
+                    </option>
+                </select>
+
                 <label>Introduce el nombre de la especie a la que pertenece la secuencia: </label>
                 <input type="text" name="name" v-model="name" />
 
@@ -16,11 +24,11 @@
 
                 <label>Introduce la información acerca de la secuencia introducida: </label>
                 <input type="text" name="information" v-model="information" />
+
+                <div class="btn">
+                    <button @click="addSequence">Guardar</button>
+                </div>
             </form>
-
-                <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
-                <button @click.prevent="addSequence">Guardar</button>
-
     </div>
 </template>
  
@@ -34,20 +42,42 @@ export default {
     data() {
         return {
             sequence: "",
+            category: "",
             name: "",
             mutation: "",
             mut_location: "",
             information: "",
+            categories: ["virus","bacteria","hongo","planta","animal","humano"
+            ],
         };
     },
     mounted() {
     },
     methods: {
+        isValidSequenceInfo() {
+      if (
+        this.sequence === "" ||
+        this.category === "" ||
+        this.name === "" ||
+        this.mutation === "" ||
+        this.mut_location === "" ||
+        this.information === ""
+      ) {
+        return false;
+      } else {
+        return true;
+      }
+    },
         async addSequence() {
+            if (!this.isValidSequenceInfo()) {
+                alert("Se deben rellaner todos los campos");
+                return;
+            }
             let id_sequence = uuidv4();
             let new_sequence = {
                 "id": id_sequence,
                 "sequence": this.sequence,
+                "category":this.category,
                 "name": this.name,
                 "mutation": this.mutation,
                 "mut_location": this.mut_location,
@@ -61,6 +91,8 @@ export default {
                 }
             };
             await fetch("http://localhost:5000/api/sequences", settings);
+            alert("Evento guardado correctamente");
+            this.$router.push("/sequences/add");
         }
     },
 }
@@ -68,29 +100,50 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .sequenceInfo{
     border: 1px solid black;
 }
 form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;  
+  align-items:start;
+  margin:0 auto;
+  text-align: left;
+  padding: 1em;
 }
 form label {
   font-weight: bold;
-  margin-left: 50%;
+
+  
 }
-label,
-input {
-  margin-top: 1em;
+.btn{
+    display:flex;
+    justify-content: center;
+    font-size:1.2em;
 }
-form input {
-  margin-right: 40em;
-  padding: 5px;
+label,input{
+    font-size:1.2em;
 }
 button {
-  padding: 0 1em;
+  font-size: 1em;
+  border-radius: 7px;
+  border: black solid 1.5px;
+  background-color: rgba(224, 224, 239, 0.77);
+  cursor: pointer;
+
+}
+
+@media(min-width:1000px){
+form {
+ max-width: 900px;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+}
+
+}
+form label + input, select{
+    margin-bottom: 1em;
 }
 
 </style>

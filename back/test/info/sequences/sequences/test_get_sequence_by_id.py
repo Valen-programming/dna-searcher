@@ -12,7 +12,8 @@ def test_should_save_new_sequence_with_its_information_attached():
     sequence1 = Sequence(
         id="001",
         sequence="TTTGGGCCCGGG",
-        name="virus",
+        category="virus",
+        name="salmonella",
         mutation="A",
         mut_location="10",
         information=" virus procedente del norte de europa",
@@ -25,7 +26,8 @@ def test_should_save_new_sequence_with_its_information_attached():
     assert response.json == {
         "id": "001",
         "sequence": "TTTGGGCCCGGG",
-        "name": "virus",
+        "category": "virus",
+        "name": "salmonella",
         "mutation": "A",
         "mut_location": "10",
         "information": " virus procedente del norte de europa",

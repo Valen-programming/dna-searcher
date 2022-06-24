@@ -1,29 +1,36 @@
 <template>
     <div class="container">
         <NavBar></NavBar>
-        <form>
-            <label>Introduce tu secuencia: </label>
-            <input type="text" name="secuencia" v-model="info.sequence" /><br>
+            <form>
+                <label>Introduce tu secuencia: </label>
+                <input type="text" name="secuencia" v-model="info.sequence" />
 
-            <label>Introduce el nombre de la especie a la que pertenece la secuencia: </label>
-            <input type="text" name="name" v-model="info.name" /> <br>
+                <label> Introduce la categoría a la que pertenece: </label>
+                <select id="category" v-model="info.category" >
+                    <option v-for="category in categories" :key="category.id">
+                        {{ category }}
+                    </option>
+                </select>
+
+                <label>Introduce el nombre de la especie a la que pertenece la secuencia: </label>
+                <input type="text" name="name" v-model="info.name" />
+
+                <label>Introduce la posición de la mutación: </label>
+                <input type="text" name="mut_location" v-model="info.mut_location" /> 
+
+                <label>Introduce el tipo de mutación: </label>
+                <input type="text" name="mutation" v-model="info.mutation" /> 
+
+                <label>Introduce la información acerca de la secuencia introducida: </label>
+                <input type="text" name="information" v-model="info.information" />
+               
+                <div class="btn">
+                    <button @click="modifyEvent">Guardar</button>
+                </div>
+            </form>
 
 
-            <label>Introduce la posición de la mutación: </label>
-            <input type="text" name="mut_location" v-model="info.mut_location" /> <br>
-
-            <label>Introduce el tipo de mutación: </label>
-            <input type="text" name="mutation" v-model="info.mutation" /> <br>
-
-            <label>Introduce la información acerca de la secuencia introducida: </label>
-            <input type="text" name="information" v-model="info.information" /><br>
-        </form>
-
-
-        <h3>Secuencia de ejemplo para hacer el alineamiento: AAAGGGCCCGGG</h3>
-        <button @click.prevent="modifyEvent">Guardar</button>
-        <!-- el prevent es para q se recargue la pagina cuando se da al boton de guardar -->
-        
+                
     </div>
 </template>
  
@@ -35,7 +42,9 @@ export default {
     components:{NavBar},
     data() {
         return {
-            info:{}
+            info:{},
+            categories: ["virus","bacteria","hongo","planta","animal","humano"
+            ],
 
         };
     },
@@ -47,9 +56,26 @@ export default {
         async loadData(){
             const response = await fetch(`http://localhost:5000/api/sequences/`+ this.$route.params.id);
             this.info = await response.json();
-
+        },
+        isValidSequenceModified() {
+          if (
+            this.info.sequence === "" ||
+            this.info.category === "" ||
+            this.info.name === "" ||
+            this.info.mutation === "" ||
+            this.info.mut_location === "" ||
+            this.info.information === ""
+          ) {
+            return false;
+          } else {
+            return true;
+          }
         },
         async modifyEvent() {
+            if (!this.isValidSequenceModified()) {
+                alert("Se deben rellaner todos los campos");
+                return;
+            }
             let modified_info = this.info
             const settings = {
                 method: "PUT",
@@ -60,6 +86,8 @@ export default {
                     
                 };
             await fetch ('http://localhost:5000/api/sequences/' + this.$route.params.id , settings);
+            alert("Evento guardado correctamente");
+            this.$router.push("/");
             },   
     },
         
@@ -67,29 +95,47 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
 .sequenceInfo{
     border: 1px solid black;
 }
 form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;  
+  align-items:start;
+  margin:0 auto;
+  text-align: left;
+  padding: 1em;  
 }
 form label {
   font-weight: bold;
-  margin-left: 50%;
 }
-label,
-input {
-  margin-top: 1em;
+.btn{
+    display:flex;
+    justify-content: center;
+    font-size: 1.2em;
 }
-form input {
-  margin-right: 40em;
-  padding: 5px;
+label, input{
+  font-size: 1.2em;
 }
 button {
-  padding: 0 1em;
+  border-radius: 7px;
+  border: black solid 1.5px;
+  background-color: rgba(224, 224, 239, 0.77);
+  cursor: pointer;
+
+}
+@media(min-width:1000px){
+form {
+ max-width: 900px;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+}
+
+}
+form label + input, select{
+    margin-bottom: 1em;
 }
 
 </style>    
